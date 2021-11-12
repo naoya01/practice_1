@@ -1,4 +1,10 @@
 <h1>Editing Book</h1>
+<% if @book.errors.any? %>
+    <%= @book.errors.full_messages.each do |message| %>
+    <%= @book.errors.count %>errorがあります
+    <%= message %>
+    <% end %>
+<% end %>
 <%= form_with model:@book,local:true do |f| %>
   <div>
   <%= f.label :Title %>
@@ -11,4 +17,4 @@
   <%= f.submit"Update Book" %>
 <% end %>
 <%= link_to "Show",book_path(@book) %>
-<%= link_to "Back",books_path( %>
+<%= link_to "Back",books_path %>
